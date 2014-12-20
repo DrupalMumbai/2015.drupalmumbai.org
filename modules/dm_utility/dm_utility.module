@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ */
+
+function dm_utility_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'session_node_form') {
+    //get current user role and based on the role give access to this field.
+    $user_admin_access = Drupal::currentUser()->hasPermission('administrator');
+    if (!$user_admin_access) {
+      $form['field_status']['#access'] = FALSE;
+    }
+  }
+}

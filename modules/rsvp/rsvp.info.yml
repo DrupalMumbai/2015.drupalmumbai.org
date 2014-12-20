@@ -1,0 +1,7 @@
+name: RSVP
+type: module
+description: 'Enables RSVP buttons for selected content types.'
+package: Custom
+version: 8.x-1.0
+core: 8.x
+configure: rsvp.content_types

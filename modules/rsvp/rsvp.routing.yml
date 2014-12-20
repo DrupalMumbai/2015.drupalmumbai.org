@@ -1,0 +1,7 @@
+rsvp.settings:
+  path: '/admin/config/rsvp'
+  defaults:
+    _form: '\Drupal\rsvp\Form\ContentTypeRsvp'
+    _title: 'Configure Content Types'
+  requirements:
+    _permission: 'administer rsvp'

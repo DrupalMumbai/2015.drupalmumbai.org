@@ -1,0 +1,83 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Rsvp module.
+ */
+
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\field\Entity\FieldStorageConfig;
+
+/**
+ * Implements hook_uninstall().
+ */
+function rsvp_uninstall() {
+}
+
+/**
+ * Implements hook_install().
+ */
+function rsvp_install() {
+
+}
+
+/**
+ * Implements hook_schema().
+ */
+function rsvp_schema() {
+  $schema['rsvp_user_list'] = array(
+    'description' => 'All users attending to the node',
+    'fields' => array(
+      'rsvp_id' => array(
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'The rsvp_id.',
+      ),
+      'user_id' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The user id.',
+      ),
+      'node_id' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The node id.',
+      ),
+      'status' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The rsvp status.',
+      ),
+      'created' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The Unix timestamp when user clicked rsvp button',
+      ),
+      'changed' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The Unix timestamp when user clicked rsvp button',
+      ),
+    ),
+    'primary key' => array('rsvp_id'),
+    'indexes' => array(
+      'rsvp_id' => array('rsvp_id'),
+    ),
+    'foreign keys' => array(
+      'node_id' => array(
+        'table' => 'node',
+        'columns' => array(
+          'node_id' => 'nid',
+        ),
+      ),
+    ),
+  );
+
+  return $schema;
+}
